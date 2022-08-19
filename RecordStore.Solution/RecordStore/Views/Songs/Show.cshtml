@@ -1,0 +1,12 @@
+@{
+  Layout = "_Layout";
+}
+    <h1>Song Details: </h1>
+
+    <h2>@Model["song"].Title</h2>
+    <h3>Album: @Model["album"].Name</h3>
+
+    <button class='btn-dark' href='/albums/@Model["album"].Id/songs/new'>Add another song</button>
+    <br/>
+    <br/>
+    <button class='btn-dark' href='/albums'>View all albums</button>
