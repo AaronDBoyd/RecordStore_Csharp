@@ -5,7 +5,7 @@ using RecordStore.Models;
 
 namespace RecordStore.Controllers
 {
-  public class CategoriesController : Controller
+  public class AlbumsController : Controller
   {
 
     [HttpGet("/albums")]
