@@ -82,5 +82,19 @@ namespace RecordStore.Tests
       CollectionAssert.AreEqual(newList, result);
     }
 
+    [TestMethod]
+    public void GetId_SongsInstantiateWithAnIdAndGetterReturns_Int()
+    {
+      //Arrange
+      string title = "Walk the dog.";
+      Song newSong = new Song(title);
+
+      //Act
+      int result = newSong.Id;
+
+      //Assert
+      Assert.AreEqual(1, result);
+    }
+
   }
 }
