@@ -6,7 +6,7 @@ using RecordStore.Models;
 namespace RecordStore.Tests 
 {
   [TestClass]
-  public class SongTests /*: IDisposable*/
+  public class SongTests : IDisposable
   
   {
 
@@ -50,6 +50,19 @@ namespace RecordStore.Tests
 
       //Assert
       Assert.AreEqual(updatedTitle, result);
+    }
+
+    [TestMethod]
+    public void GetAll_ReturnsEmptyList_SongList()
+    {
+      // Arrange
+      List<Song> newList = new List<Song> { };
+
+      // Act
+      List<Song> result = Song.GetAll();
+
+      // Assert
+      CollectionAssert.AreEqual(newList, result);
     }
 
   }
