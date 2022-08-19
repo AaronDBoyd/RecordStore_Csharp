@@ -6,13 +6,13 @@ using System;
 namespace RecordStore.Tests
 {
   [TestClass]
-  public class AlbumTests /*: IDisposable*/
+  public class AlbumTests : IDisposable
   {
 
-    // public void Dispose()
-    // {
-    //   Album.ClearAll();
-    // }
+    public void Dispose()
+    {
+      Album.ClearAll();
+    }
 
     [TestMethod]
     public void AlbumConstructor_CreatesInstanceOfAlbum_Album()
@@ -33,6 +33,21 @@ namespace RecordStore.Tests
 
       //Assert
       Assert.AreEqual(name, result);
+    }
+
+    
+    [TestMethod]
+    public void GetId_ReturnsAlbumId_Int()
+    {
+      //Arrange
+      string name = "Test Album";
+      Album newAlbum = new Album(name);
+
+      //Act
+      int result = newAlbum.Id;
+
+      //Assert
+      Assert.AreEqual(1, result);
     }
   }
 }
