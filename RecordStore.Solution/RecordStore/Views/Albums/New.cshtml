@@ -1,0 +1,14 @@
+@{
+  Layout = "_Layout";
+}
+    <h1>Add an Album</h1>
+    <p>Add an Album here:</p>
+
+    <form action="/albums" method="post">
+      <label for="albumName">Album name</label>
+      <input id="albumName" name="albumName" type="text">
+      <button type="submit">Add</button>
+    </form>
+
+    <p><a href="/">Back home</a></p>
+    <p><a href="/albums">Back to albums.</a></p>
