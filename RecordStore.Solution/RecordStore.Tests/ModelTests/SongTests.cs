@@ -36,5 +36,21 @@ namespace RecordStore.Tests
       Assert.AreEqual(title, result);
     }
 
+    [TestMethod]
+    public void SetTitle_SetTitle_String()
+    {
+      //Arrange
+      string title = "Walk the dog.";
+      Song newSong = new Song(title);
+
+      //Act
+      string updatedTitle = "Do the dishes";
+      newSong.Title = updatedTitle;
+      string result = newSong.Title;
+
+      //Assert
+      Assert.AreEqual(updatedTitle, result);
+    }
+
   }
 }
