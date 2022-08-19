@@ -65,5 +65,22 @@ namespace RecordStore.Tests
       CollectionAssert.AreEqual(newList, result);
     }
 
+    [TestMethod]
+    public void GetAll_ReturnsSongs_SongList()
+    {
+      //Arrange
+      string title01 = "Walk the dog";
+      string title02 = "Wash the dishes";
+      Song newSong1 = new Song(title01);
+      Song newSong2 = new Song(title02);
+      List<Song> newList = new List<Song> { newSong1, newSong2 };
+
+      //Act
+      List<Song> result = Song.GetAll();
+
+      //Assert
+      CollectionAssert.AreEqual(newList, result);
+    }
+
   }
 }
