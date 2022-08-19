@@ -82,5 +82,23 @@ namespace RecordStore.Tests
       //Assert
       Assert.AreEqual(newAlbum2, result);
     }
+
+    [TestMethod]
+    public void AddSong_AssociatesItemWithAlbum_SongList()
+    {
+      //Arrange
+      string title = "Walk the dog.";
+      Song newSong = new Song(title);
+      List<Song> newList = new List<Song> { newSong };
+      string name = "Work";
+      Album newAlbum = new Album(name);
+      newAlbum.AddSong(newSong);
+
+      //Act
+      List<Song> result = newAlbum.Songs;
+
+      //Assert
+      CollectionAssert.AreEqual(newList, result);
+    }
   }
 }
