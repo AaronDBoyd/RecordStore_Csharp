@@ -66,5 +66,21 @@ namespace RecordStore.Tests
       //Assert
       CollectionAssert.AreEqual(newList, result);
     }
+
+    [TestMethod]
+    public void Find_ReturnsCorrectAlbum_Album()
+    {
+      //Arrange
+      string name01 = "Work";
+      string name02 = "School";
+      Album newAlbum1 = new Album(name01);
+      Album newAlbum2 = new Album(name02);
+
+      //Act
+      Album result = Album.Find(2);
+
+      //Assert
+      Assert.AreEqual(newAlbum2, result);
+    }
   }
 }
