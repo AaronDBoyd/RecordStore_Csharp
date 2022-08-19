@@ -96,5 +96,21 @@ namespace RecordStore.Tests
       Assert.AreEqual(1, result);
     }
 
+    [TestMethod]
+    public void Find_ReturnsCorrectSong_Song()
+    {
+      //Arrange
+      string title01 = "Walk the dog";
+      string title02 = "Wash the dishes";
+      Song newSong1 = new Song(title01);
+      Song newSong2 = new Song(title02);
+
+      //Act
+      Song result = Song.Find(2);
+
+      //Assert
+      Assert.AreEqual(newSong2, result);
+    }
+
   }
 }
