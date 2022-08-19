@@ -1,0 +1,24 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.NET.Test.Sdk" Version="15.0.0" />
+    <!-- Microsoft.NET.Test.Sdk imports functionality to set up and build our testing environment; -->
+
+    <PackageReference Include="MSTest.TestAdapter" Version="1.3.2" />
+    <!-- MSTest.TestAdapter will run our tests for us; -->
+
+    <PackageReference Include="MSTest.TestFramework" Version="1.3.2" />
+    <!-- MSTest.TestFramework allows us to create test classes and methods and to use other built-in code to construct tests. -->
+
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\RecordStore\RecordStore.csproj" />  
+    <!-- References our main production project without interfering with it. -->
+
+  </ItemGroup>
+
+</Project>
