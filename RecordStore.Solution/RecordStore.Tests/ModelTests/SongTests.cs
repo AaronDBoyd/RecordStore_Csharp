@@ -22,5 +22,19 @@ namespace RecordStore.Tests
       Assert.AreEqual(typeof(Song), newSong.GetType());
     }
 
+    [TestMethod]
+    public void GetTitle_ReturnsTitle_String()
+    {
+      //Arrange
+      string title = "Walk the dog.";
+      Song newSong = new Song(title);
+
+      //Act
+      string result = newSong.Title;
+
+      //Assert
+      Assert.AreEqual(title, result);
+    }
+
   }
 }
