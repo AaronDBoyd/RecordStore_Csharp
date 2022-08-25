@@ -1,35 +1,76 @@
 using Microsoft.AspNetCore.Mvc;
 using RecordStore.Models;
 using System.Collections.Generic; // allows use of Lists
+using System.Linq;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace RecordStore.Controllers
 {
   public class SongsController : Controller
   {
+    private readonly RecordStoreContext _db;
 
-    [HttpGet("/albums/{albumId}/songs/new")]
-    public ActionResult New(int albumId)
+    public SongsController(RecordStoreContext db)
     {
-      Album album = Album.Find(albumId);
-      return View(album);
-    }  
+      _db = db;
+    }
 
-    [HttpPost("/songs/delete")]
-    public ActionResult DeleteAll()
+    public ActionResult Index()
     {
-      Song.ClearAll();
+      List<Song> model = _db.Songs.Include(song => song.Album).ToList();
+      ViewBag.PageTitle = "View All Songs";
+      return View(model);
+    }
+
+    public ActionResult Create()
+    {
+      ViewBag.AlbumId = new SelectList(_db.Albums, "AlbumId", "Name");
       return View();
     }
 
-    [HttpGet("/albums/{albumId}/songs/{songId}")]
-    public ActionResult Show(int albumId, int songId)
+    [HttpPost]
+    public ActionResult Create(Song song)
     {
-      Song song = Song.Find(songId);
-      Album album = Album.Find(albumId);
-      Dictionary<string, object> model = new Dictionary<string, object>();
-      model.Add("song", song);
-      model.Add("album", album);
-      return View(model);
+        _db.Songs.Add(song);
+        _db.SaveChanges();
+        return RedirectToAction("Index");
+    }
+
+    public ActionResult Details(int id)
+    {
+        Song thisSong = _db.Songs.FirstOrDefault(song => song.SongId == id);
+        return View(thisSong);
+    }
+    
+    public ActionResult Edit(int id)
+    {
+        var thisSong = _db.Songs.FirstOrDefault(Song => song.SongId == id);
+        ViewBag.AlbumId = new SelectList(_db.Albums, "AlbumId", "Name");
+        return View(thisSong);
+    }
+
+    [HttpPost]
+    public ActionResult Edit(Song song)
+    {
+        _db.Entry(song).State = EntityState.Modified;
+        _db.SaveChanges();
+        return RedirectToAction("Index");
+    }
+
+    public ActionResult Delete(int id)
+    {
+        var thisSong = _db.Songs.FirstOrDefault(song => song.SongId == id);
+        return View(thisSong);
+    }
+
+    [HttpPost, ActionName("Delete")]
+    public ActionResult DeleteConfirmed(int id)
+    {
+        var thisSong = _db.Songs.FirstOrDefault(song => song.SongId == id);
+        _db.Songs.Remove(thisSong);
+        _db.SaveChanges();
+        return RedirectToAction("Index");
     }
   }
 }
