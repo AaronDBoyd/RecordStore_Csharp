@@ -2,18 +2,21 @@
   Layout = "_Layout";
 }
 
-@model RecordStore.Models.Song
+@using RecordStore.Models;
+@model List<RecordStore.Models.Song>;
 
-<h4>Add a new song</h4>
+<h1>Songs</h1>
 
-@using (Html.BeginForm())
+@if (@Model.Count == 0)
 {
-  @Html.LabelFor(model => model.Title)
-  @Html.TextBoxFor(model => model.Title)
+  <h3>No songs have been added yet!</h3>
+} 
 
-  @Html.LabelFor(model => model.Album)
-  @Html.DropDownList("AlbumId")
-
-  <input type="submit" value="Add new song" class="btn btn-default" />
+@foreach (Song song in Model)
+{
+  <li>@Html.ActionLink($"{song.Title}", "Details", new { id = song.SongId }) | @song.Album.Name</li>
 }
-<p>@Html.ActionLink("Show all songs", "Index")</p>
+
+<p>@Html.ActionLink("Add new song", "Create")</p>
+
+<p>@Html.ActionLink("Home", "Index", "Home")</p>
