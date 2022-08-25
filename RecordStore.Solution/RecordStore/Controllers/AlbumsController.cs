@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using RecordStore.Models;
 using Microsoft.EntityFrameworkCore;
 
@@ -36,13 +37,13 @@ namespace RecordStore.Controllers
 
     public ActionResult Details(int id)
     {
-        Album thisAlbum = _db.Albums.FirstOrDefault(album => Album.AlbumId == id);
+        Album thisAlbum = _db.Albums.FirstOrDefault(album => album.AlbumId == id);
         return View(thisAlbum);
     }
 
     public ActionResult Edit(int id)
     {
-        var thisAlbum = _db.Albums.FirstOrDefault(album => Album.AlbumId == id);
+        var thisAlbum = _db.Albums.FirstOrDefault(album => album.AlbumId == id);
         return View(thisAlbum);
     }
 
@@ -56,7 +57,7 @@ namespace RecordStore.Controllers
     
     public ActionResult Delete(int id)
     {
-        var thisAlbum = _db.Albums.FirstOrDefault(album => Album.AlbumId == id);
+        var thisAlbum = _db.Albums.FirstOrDefault(album => album.AlbumId == id);
         return View(thisAlbum);
     }
 

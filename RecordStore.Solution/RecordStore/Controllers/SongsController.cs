@@ -45,7 +45,7 @@ namespace RecordStore.Controllers
     
     public ActionResult Edit(int id)
     {
-        var thisSong = _db.Songs.FirstOrDefault(Song => song.SongId == id);
+        var thisSong = _db.Songs.FirstOrDefault(song => song.SongId == id);
         ViewBag.AlbumId = new SelectList(_db.Albums, "AlbumId", "Name");
         return View(thisSong);
     }

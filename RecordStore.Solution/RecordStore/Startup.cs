@@ -14,7 +14,7 @@ namespace RecordStore
     {
       var builder = new ConfigurationBuilder()
           .SetBasePath(env.ContentRootPath)
-          .AddEnvironmentVariables();
+          .AddJsonFile("appsettings.json");
       Configuration = builder.Build();
     }
 
@@ -25,7 +25,7 @@ namespace RecordStore
       services.AddMvc();
 
       services.AddEntityFrameworkMySql()
-        .AddDbContext<ToDoListContext>(options => options
+        .AddDbContext<RecordStoreContext>(options => options
         .UseMySql(Configuration["ConnectionStrings:DefaultConnection"], ServerVersion.AutoDetect(Configuration["ConnectionStrings:DefaultConnection"])));
     }
 
