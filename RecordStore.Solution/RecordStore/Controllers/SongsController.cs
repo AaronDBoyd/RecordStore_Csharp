@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using RecordStore.Models;
-using System.Collections.Generic; // allows use of Lists
+using System.Collections.Generic; 
 using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Mvc.Rendering;
