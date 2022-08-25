@@ -19,6 +19,10 @@ This project demonstrates CRUD functionality and a One-to-Many relationship usin
 
 A user can add Albums and Songs. When a user adds a Song they can associate it with an existing Album.
 
+## Snapshot
+
+![Home View](RecordStore.Solution\RecordStore\wwwroot\img\home-index.png)
+
 ## Setup Installation Requirements
 
 1. Clone the RecordStore repository
