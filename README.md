@@ -21,7 +21,7 @@ A user can add Albums and Songs. When a user adds a Song they can associate it w
 
 ## Snapshot
 
-![Home View](home-index.png)
+![Home View](RecordStore.Solution\RecordStore\wwwroot\img\home-index.png?raw=true)
 
 ## Setup Installation Requirements
 
