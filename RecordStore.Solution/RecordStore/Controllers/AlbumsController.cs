@@ -1,55 +1,72 @@
 using System.Collections.Generic;
-using System;
+using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using RecordStore.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace RecordStore.Controllers
 {
   public class AlbumsController : Controller
   {
+    private readonly RecordStoreContext _db;
 
-    [HttpGet("/albums")]
-    public ActionResult Index() 
+    public AlbumsController(RecordStoreContext db)
     {
-      List<Album> allAlbums = Album.GetAll();
-      return View(allAlbums);
+      _db = db;
     }
 
-    [HttpGet("/albums/new")]
-    public ActionResult New()
+    public ActionResult Index()
     {
-      return View();
-    }
-
-    [HttpPost("/albums")]
-    public ActionResult Create(string albumName)
-    {
-      Album newAlbum = new Album(albumName);
-      return RedirectToAction("Index");
-    }
-
-    [HttpGet("/albums/{id}")]
-    public ActionResult Show(int id)
-    {
-      Dictionary<string, object> model = new Dictionary<string, object>();
-      Album selectedAlbum = Album.Find(id);
-      List<Song> albumSongs = selectedAlbum.Songs;
-      model.Add("album", selectedAlbum);
-      model.Add("songs", albumSongs);
+      List<Album> model = _db.Albums.ToList();
       return View(model);
     }
 
-    [HttpPost("/albums/{albumId}/songs")]
-    public ActionResult Create(int albumId, string songTitle)
+    public ActionResult Create()
     {
-      Dictionary<string, object> model = new Dictionary<string, object>();
-      Album foundAlbum = Album.Find(albumId);
-      Song newSong = new Song(songTitle);
-      foundAlbum.AddSong(newSong);
-      List<Song> albumSongs = foundAlbum.Songs;
-      model.Add("songs", albumSongs);
-      model.Add("album", foundAlbum);
-      return View("Show", model);
+        return View();
+    }
+
+    [HttpPost]
+    public ActionResult Create(Album album)
+    {
+        _db.Albums.Add(album);
+        _db.SaveChanges();
+        return RedirectToAction("Index");
+    }
+
+    public ActionResult Details(int id)
+    {
+        Album thisAlbum = _db.Albums.FirstOrDefault(album => Album.AlbumId == id);
+        return View(thisAlbum);
+    }
+
+    public ActionResult Edit(int id)
+    {
+        var thisAlbum = _db.Albums.FirstOrDefault(album => Album.AlbumId == id);
+        return View(thisAlbum);
+    }
+
+    [HttpPost]
+    public ActionResult Edit(Album album)
+    {
+        _db.Entry(album).State = EntityState.Modified;
+        _db.SaveChanges();
+        return RedirectToAction("Index");
+    }
+    
+    public ActionResult Delete(int id)
+    {
+        var thisAlbum = _db.Albums.FirstOrDefault(album => Album.AlbumId == id);
+        return View(thisAlbum);
+    }
+
+    [HttpPost, ActionName("Delete")]
+    public ActionResult DeleteConfirmed(int id)
+    {
+        var thisAlbum = _db.Albums.FirstOrDefault(album => album.AlbumId == id);
+        _db.Albums.Remove(thisAlbum);
+        _db.SaveChanges();
+        return RedirectToAction("Index");
     }
   }
 }
