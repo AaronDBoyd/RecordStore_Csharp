@@ -9,7 +9,7 @@ div#footer {
 }
 
 body {
-  /* background-color: rgb(248, 164, 124); */
-  background-image: url("./../img/guitar-pattern.png");
+  background-color: rgb(248, 164, 124);
+  /* background-image: url("./../img/guitar-pattern.png"); */
   text-align: center;
 }
