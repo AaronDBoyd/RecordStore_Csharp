@@ -1,0 +1,15 @@
+@{
+  Layout = "_Layout";
+}
+
+@model RecordStore.Models.Song
+
+<h2>Song Details</h2>
+<hr />
+<h3>@Html.DisplayNameFor(model => model.Title): @Html.DisplayFor(model => model.Title)<h3>
+
+<p>@Html.ActionLink("Edit Song", "Edit", new { id = Model.SongId })</p>
+
+<p>@Html.ActionLink("Delete Song", "Delete", new { id = Model.SongId })</p>
+
+<p>@Html.ActionLink("Back to list", "Index")</p>
