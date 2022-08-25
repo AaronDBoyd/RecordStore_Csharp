@@ -2,39 +2,15 @@ using System.Collections.Generic;
 
 namespace RecordStore.Models
 {
-  public class Album
-  {
-    private static List<Album> _instances = new List<Album> {};
-    public string Name { get; set; }
-    public int Id { get; }
-    public List<Song> Songs { get; set; }
-
-    public Album(string albumName)
+    public class Album
     {
-      Name = albumName;
-      _instances.Add(this);
-      Id = _instances.Count;
-      Songs = new List<Song>{};
-    }
+        public Album()
+        {
+            this.Songs = new HashSet<Song>();
+        }
 
-    public static void ClearAll()
-    {
-      _instances.Clear();
+        public int AlbumId { get; set; }
+        public string Name { get; set; }
+        public virtual ICollection<Song> Songs { get; set; }
     }
-
-    public static List<Album> GetAll()
-    {
-      return _instances;
-    }
-
-    public static Album Find(int searchId)
-    {
-      return _instances[searchId-1];
-    }
-
-    public void AddSong(Song song)
-    {
-      Songs.Add(song);
-    }
-  }
 }
