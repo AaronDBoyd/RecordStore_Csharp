@@ -5,17 +5,14 @@
 
 @model List<RecordStore.Models.Album>;
 
-<h1>Albums</h1>
+<h1 class="title">Albums</h1>
 
-<ul>
   @foreach(Album album in Model)
   {
-    <li>@Html.ActionLink($"{album.Name}", "Details", new { id = album.AlbumId })</li>
+    <p class="list__link btn btn-outline-dark btn-block">@Html.ActionLink($"{album.Name}", "Details", new { id = album.AlbumId })</p>
   }
-</ul>
 
-<p>@Html.ActionLink("Add new album", "Create")</p>
-
+<p class="btn btn-dark btn-block">@Html.ActionLink("Add new album", "Create")</p>
 
 
-<p>@Html.ActionLink("Home", "Index", "Home")</p>
+

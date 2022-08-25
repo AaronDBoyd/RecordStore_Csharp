@@ -4,7 +4,7 @@
 
 @model RecordStore.Models.Song
 
-<h4>Add a new song</h4>
+<h4 class="title">Add a new song</h4>
 
 @using (Html.BeginForm())
 {
@@ -14,6 +14,9 @@
   @Html.LabelFor(model => model.Album)
   @Html.DropDownList("AlbumId")
 
-  <input type="submit" value="Add new song" class="btn btn-default" />
+
+  <input type="submit" value="Add new song" class="list__link btn btn-outline-dark" />
 }
-<p>@Html.ActionLink("Show all songs", "Index")</p>
+<br/>
+<br/>
+<p class="btn btn-dark btn-block">@Html.ActionLink("Show all songs", "Index")</p>

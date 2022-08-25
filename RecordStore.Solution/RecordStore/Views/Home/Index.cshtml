@@ -1,14 +1,11 @@
 @{
   Layout = "_Layout";
 }
-  <h1>Welcome to the Record Store!</h1>
+<br/>
+<br/>
+<br/>
+<div class="links__home">
+  <p class="btn btn-dark">@Html.ActionLink("See all Songs", "Index", "Songs")</p>
 
-  <p>@Html.ActionLink("See all songs", "Index", "Songs")</p>
-
-  <p>@Html.ActionLink("See all albums", "Index", "Albums")</p>
-
-
-  @* <h3><a class='btn btn-dark' href='/albums'>View Albums</a></h3>
-  <h3><a class='btn btn-dark' href='/albums/new'>Add a new Album</a></h3> *@
-
-  @* <img src='~/img/guitar-pattern.png'/> *@
+  <p class="btn btn-dark">@Html.ActionLink("See all Albums", "Index", "Albums")</p>
+</div>

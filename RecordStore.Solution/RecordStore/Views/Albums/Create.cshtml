@@ -4,11 +4,13 @@
 
 @model RecordStore.Models.Album
 
-<h4>Add a new album</h4>
+<h4 class="title">Add a new album</h4>
 @using (Html.BeginForm())
 {
   @Html.LabelFor(model => model.Name)
   @Html.TextBoxFor(model => model.Name)
-  <input type="submit" value="Add new album" />
+  <input type="submit" value="Add new album" class="list__link btn btn-outline-dark" />
 }
-<p>@Html.ActionLink("Show all albums", "Index")</p>
+<br/>
+<br/>
+<p class="btn btn-dark btn-block">@Html.ActionLink("Show all albums", "Index")</p>

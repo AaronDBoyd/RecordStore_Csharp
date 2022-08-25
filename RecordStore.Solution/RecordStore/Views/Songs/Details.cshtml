@@ -4,12 +4,11 @@
 
 @model RecordStore.Models.Song
 
-<h2>Song Details</h2>
-<hr />
+<h1 class="title">Song Details</h1>
+
 <h3>@Html.DisplayNameFor(model => model.Title): @Html.DisplayFor(model => model.Title)<h3>
-
-<p>@Html.ActionLink("Edit Song", "Edit", new { id = Model.SongId })</p>
-
-<p>@Html.ActionLink("Delete Song", "Delete", new { id = Model.SongId })</p>
-
-<p>@Html.ActionLink("Back to list", "Index")</p>
+<br/>
+<p class="btn btn-dark btn-block">@Html.ActionLink("Edit Song", "Edit", new { id = Model.SongId })</p>
+<p class="btn btn-dark btn-block">@Html.ActionLink("Delete Song", "Delete", new { id = Model.SongId })</p>
+<br/>
+<p class="btn btn-dark btn-block">@Html.ActionLink("Back to list", "Index")</p>

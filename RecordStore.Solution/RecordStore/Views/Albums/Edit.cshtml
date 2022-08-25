@@ -4,7 +4,7 @@
 
 @model RecordStore.Models.Album
 
-<h2>Edit</h2>
+<h2 class="title">Edit</h2>
 
 <h4>Edit this album: @Html.DisplayFor(model => model.Name)</h4>
 
@@ -15,6 +15,7 @@
     @Html.LabelFor(model => model.Name)
     @Html.EditorFor(model => model.Name)
 
-    <input type="submit" value="Save" />
+    <input type="submit" value="Save" class="list__link btn btn-outline-dark" />
 }
-<p>@Html.ActionLink("Back to list", "Index")</p>
+<br/>
+<p class="btn btn-dark btn-block">@Html.ActionLink("Back to list", "Index")</p>
