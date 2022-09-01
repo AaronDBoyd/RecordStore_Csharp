@@ -4,7 +4,7 @@
 
 @model RecordStore.Models.Artist
 
-<h2>Artist Details</h2>
+<h2 class="title">Artist Details</h2>
 <hr />
 <h3>@Html.DisplayNameFor(model => model.Name): @Html.DisplayFor(model => model.Name)<h3>
 
@@ -12,33 +12,26 @@
 {
   <p>This Artist does not belong to any Albums</p>
 }
-else
-{
-  <h4>Albums the Artist belongs to:</h4>
-  <ul>
-  @foreach(var join in Model.JoinEntities)
-  {
-    <li>@join.Album.Name</li>
-  }
-  </ul>
-}  
 
-<ul>
+<h4>Albums for this Artist</h4>
+
   @foreach(var join in Model.JoinEntities)
   {
-    <li>@join.Album.Name</li>
+    <p class="list__link btn btn-outline-dark btn-block">@Html.ActionLink($"{join.Album.Name}", "Details", "Albums", new { id = join.Album.AlbumId })</p>
+
     @using (Html.BeginForm("DeleteAlbum", "Artists"))
     {
       @Html.Hidden("joinId", @join.AlbumArtistId)
-      <input type="submit" value="Delete"/>
+      <input type="submit" value="Delete" class="list__link btn btn-outline-dark"/>
     }
+    <h4>. . . . . . . . . . .</h4>
   }
-  </ul>
+  
 
-<p>@Html.ActionLink("Add an Album", "AddAlbum", new { id = Model.ArtistId })</p>
+<p class="btn btn-dark btn-block">@Html.ActionLink("Add an Album", "AddAlbum", new { id = Model.ArtistId })</p>
 
-<p>@Html.ActionLink("Edit Artist", "Edit", new { id = Model.ArtistId })</p>
+<p class="btn btn-dark btn-block">@Html.ActionLink("Edit Artist", "Edit", new { id = Model.ArtistId })</p>
 
-<p>@Html.ActionLink("Delete Artist", "Delete", new { id = Model.ArtistId })</p>
+<p class="btn btn-dark btn-block">@Html.ActionLink("Delete Artist", "Delete", new { id = Model.ArtistId })</p>
 
-<p>@Html.ActionLink("Back to list", "Index")</p>
+<p class="btn btn-dark btn-block">@Html.ActionLink("Back to list", "Index")</p>

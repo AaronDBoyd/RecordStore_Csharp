@@ -1,4 +1,4 @@
-@* @{
+@{
   Layout = "_Layout";
 }
 
@@ -17,4 +17,4 @@
   <p class="list__link btn btn-outline-dark btn-block">@Html.ActionLink($"{song.Title}", "Details", new { id = song.SongId }) | Album: @song.Album.Name</p>
   
 }
-<p class="btn btn-dark btn-block">@Html.ActionLink("Add new song", "Create")</p> *@
+<p class="btn btn-dark btn-block">@Html.ActionLink("Add new song", "Create")</p>

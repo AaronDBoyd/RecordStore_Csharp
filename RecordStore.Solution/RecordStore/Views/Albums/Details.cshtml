@@ -15,12 +15,11 @@
 else
 {
   <h4>Artists the Album are:</h4>
-  <ul>
+  
   @foreach(var join in Model.JoinEntities)
   {
-    <li>@join.Artist.Name</li>
+    <p class="list__link btn btn-outline-dark btn-block">@Html.ActionLink($"{join.Artist.Name}", "Details", "Artists", new { id = join.Artist.ArtistId })</p>
   }
-  </ul>
 }
 
 <br/>
