@@ -21,7 +21,7 @@ namespace RecordStore.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Artist",
+                name: "Artists",
                 columns: table => new
                 {
                     ArtistId = table.Column<int>(type: "int", nullable: false)
@@ -30,7 +30,7 @@ namespace RecordStore.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Artist", x => x.ArtistId);
+                    table.PrimaryKey("PK_Artists", x => x.ArtistId);
                 });
 
             migrationBuilder.CreateTable(
@@ -74,7 +74,7 @@ namespace RecordStore.Migrations
                     table.ForeignKey(
                         name: "FK_AlbumArtist_Artist_ArtistId",
                         column: x => x.ArtistId,
-                        principalTable: "Artist",
+                        principalTable: "Artists",
                         principalColumn: "ArtistId",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -104,7 +104,7 @@ namespace RecordStore.Migrations
                 name: "Songs");
 
             migrationBuilder.DropTable(
-                name: "Artist");
+                name: "Artists");
 
             migrationBuilder.DropTable(
                 name: "Albums");

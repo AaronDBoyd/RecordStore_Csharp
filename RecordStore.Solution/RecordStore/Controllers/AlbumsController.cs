@@ -37,7 +37,7 @@ namespace RecordStore.Controllers
 
     public ActionResult Details(int id)
     {
-        var thisAlbum = -db.Albums
+        var thisAlbum = _db.Albums
         .Include(album => album.JoinEntities)
         .ThenInclude(join => join.Album)
         .FirstOrDefault(album => album.AlbumId ==id);

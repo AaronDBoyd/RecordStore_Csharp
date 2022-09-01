@@ -62,7 +62,7 @@ namespace RecordStore.Migrations
 
                     b.HasKey("ArtistId");
 
-                    b.ToTable("Artist");
+                    b.ToTable("Artists");
                 });
 
             modelBuilder.Entity("RecordStore.Models.Song", b =>

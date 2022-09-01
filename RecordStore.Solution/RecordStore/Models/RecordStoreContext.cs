@@ -4,7 +4,7 @@ namespace RecordStore.Models
 {
   public class RecordStoreContext : DbContext
   {
-    public DbSet<Artist> Artist { get; set; }
+    public DbSet<Artist> Artists { get; set; }
     public DbSet<AlbumArtist> AlbumArtist { get; set; }
     public DbSet<Album> Albums { get; set; }
     public DbSet<Song> Songs { get; set; }
