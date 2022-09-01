@@ -1,4 +1,4 @@
-@* @{
+@{
   Layout = "_Layout";
 }
 
@@ -7,8 +7,24 @@
 <h2 class="title">Album Details</h2>
 
 <h3>@Html.DisplayNameFor(model => model.Name): @Html.DisplayFor(model => model.Name)<h3>
+
+@if(@Model.JoinEntities.Count == 0)
+{
+  <p>This album does not contain any artists</p>
+}
+else
+{
+  <h4>Artists the Album are:</h4>
+  <ul>
+  @foreach(var join in Model.JoinEntities)
+  {
+    <li>@join.Artist.Name</li>
+  }
+  </ul>
+}
+
 <br/>
 <p class="btn btn-dark btn-block">@Html.ActionLink("Edit Album", "Edit", new { id = Model.AlbumId })</p>
 <p class="btn btn-dark btn-block">@Html.ActionLink("Delete Album", "Delete", new { id = Model.AlbumId })</p>
 <br/>
-<p class="btn btn-dark btn-block">@Html.ActionLink("Back to list", "Index")</p> *@
+<p class="btn btn-dark btn-block">@Html.ActionLink("Back to list", "Index")</p>
