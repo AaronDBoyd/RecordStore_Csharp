@@ -1,0 +1,44 @@
+@{
+  Layout = "_Layout";
+}
+
+@model RecordStore.Models.Artist
+
+<h2>Artist Details</h2>
+<hr />
+<h3>@Html.DisplayNameFor(model => model.Name): @Html.DisplayFor(model => model.Name)<h3>
+
+@if(@Model.JoinEntities.Count == 0)
+{
+  <p>This Artist does not belong to any Albums</p>
+}
+else
+{
+  <h4>Albums the Artist belongs to:</h4>
+  <ul>
+  @foreach(var join in Model.JoinEntities)
+  {
+    <li>@join.Album.Name</li>
+  }
+  </ul>
+}  
+
+<ul>
+  @foreach(var join in Model.JoinEntities)
+  {
+    <li>@join.Album.Name</li>
+    @using (Html.BeginForm("DeleteAlbum", "Artists"))
+    {
+      @Html.Hidden("joinId", @join.AlbumArtistId)
+      <input type="submit" value="Delete"/>
+    }
+  }
+  </ul>
+
+<p>@Html.ActionLink("Add an Album", "AddAlbum", new { id = Model.ArtistId })</p>
+
+<p>@Html.ActionLink("Edit Artist", "Edit", new { id = Model.ArtistId })</p>
+
+<p>@Html.ActionLink("Delete Artist", "Delete", new { id = Model.ArtistId })</p>
+
+<p>@Html.ActionLink("Back to list", "Index")</p>
